@@ -1,34 +1,84 @@
-const React = require('react');
+import React from "react";
 
-const New = (props) => {
-  return (
-    <div style={{
-      fontFamily: "Times New Roman",
-      fontSize: "1rem",
-      padding: "1rem",
-      display: "flex",
-      flexDirection: "column"
-    }}>
-      <h1 style={{color: "green"}}>New Flight</h1>
-      {
-      /* In here goes your form for creating a new Flight
-      I added a dropdown selector to make selection more clear */
-      <form action="/flights" method="POST">
-        <label style={{padding: "1rem", margin: "1rem"}}>Airline:</label>
-        {/* <input style={{margin: "1rem"}} type="text" name="airline" placeholder="American, Southwest, or United" /> */}
-        <select name="airline" style={{padding: ".1rem", margin: "1rem"}}>
-          <option value="American">American</option>
-          <option value="Southwest">Southwest</option>
-          <option value="United">United</option>
-        </select>
-        <br/>
-        <label style={{padding: "1rem", margin: "1rem"}}>Flight No:</label>
-        <input style={{margin: "1rem"}} type="number" name="flightNo" /><br/>
-        <input style={{margin: "2rem"}} type="submit" name="" value="Create Flight!" />
-      </form>
-      }
-    </div>
-  )
+class New extends React.Component {
+  render() {
+    const formContainerStyle = {
+      maxWidth: "600px",
+      maxHeight: "600px",
+      marginTop: "10%",
+      backgroundColor: "lightblue",
+      marginLeft: "20%",
+    };
+
+    const titleStyle = {
+      fontSize: "40px",
+      marginBottom: "20px",
+      textAlign: "center",
+    };
+
+    const inputStyle = {
+      padding: "8px",
+      marginBottom: "15px",
+      fontSize: "15px",
+    };
+
+    const submitButtonStyle = {
+      padding: "10px 20px",
+      backgroundColor: "#4caf50",
+      color: "white",
+      border: "none",
+      cursor: "pointer",
+      alignItems: "center",
+    };
+
+    return (
+      <div style={formContainerStyle}>
+        <h1 style={titleStyle}>New Flight Details Page</h1>
+        <hr />
+        <form action="/flights" method="POST">
+          Airline:
+          <input type="text" name="airline" style={inputStyle} /> <br />
+          FlightNo: <input
+            type="text"
+            name="flightNo"
+            style={inputStyle}
+          />{" "}
+          <br />
+          Departs:{" "}
+          <input type="datetime-local" name="departs" style={inputStyle} />{" "}
+          <br />
+          <hr />
+          <input
+            type="submit"
+            value="Create Flight"
+            style={submitButtonStyle}
+          />
+        </form>
+      </div>
+    );
+  }
 }
 
-module.exports = New;
+export default New;
+
+// const React = require("react");
+
+// class New extends React.Component {
+//   render() {
+//     return (
+//       <div>
+//         <h1>New Flight Details page</h1>
+//         <form action="/flights" method="POST">
+//           Airline: <input type="text" name="airline" /> <br />
+//           FlightNo: <input type="text" name="flightNo" /> <br />
+//           Departs: <input type="datetime-local" name="departs" />{" "}
+//           {/* Updated name attribute */}
+//           <br />
+//           <input type="submit" value="Create Flight" />
+//         </form>
+//       </div>
+//     );
+//   }
+// }
+
+// module.exports = New;
