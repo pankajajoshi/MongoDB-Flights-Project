@@ -1,5 +1,14 @@
 const React = require("react");
 
+const buttonStyle = {
+  display: "inline-block",
+  padding: "8px 12px",
+  backgroundColor: "#4caf50",
+  color: "white",
+  textDecoration: "none",
+  borderRadius: "4px",
+};
+
 class Show extends React.Component {
   render() {
     return (
@@ -7,7 +16,7 @@ class Show extends React.Component {
         style={{
           fontFamily: "Times New Roman",
           color: "purple",
-          fontSize: "3rem",
+          fontSize: "2.5rem",
           padding: "2rem",
         }}
       >
@@ -17,7 +26,9 @@ class Show extends React.Component {
           {this.props.flight.flightNo} and the flight leaves at{" "}
           {this.props.flight.departs.toDateString()}.
         </p>
-        <a href="/flights">Return</a>
+        <a href="/flights" style={buttonStyle}>
+          Return
+        </a>
       </div>
     );
   }

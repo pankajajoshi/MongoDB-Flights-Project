@@ -1,19 +1,13 @@
 import React from "react";
 
-// const myStyle = {
-//   display: "flex",
-//   flexDirection: "column",
-//   alignItems: "center",
-//   justifyContent: "center",
-//   color: "black",
-//   backgroundColor: "lightgrey",
-//   marginLeft: "10%",
-//   marginRight: "20%",
-//   padding: "20px",
-//   marginTop: "100px",
-//   fontSize: "24px",
-//   boxShadow: "0 0 20px rgba(0, 0, 0, 0.2)",
-// };
+const buttonStyle = {
+  display: "inline-block",
+  padding: "8px 12px",
+  backgroundColor: "#4caf50",
+  color: "white",
+  textDecoration: "none",
+  borderRadius: "4px",
+};
 
 class Index extends React.Component {
   render() {
@@ -24,27 +18,31 @@ class Index extends React.Component {
           color: "blue",
           fontSize: "2rem",
           padding: "2rem",
-          alignContent: "center",
-          justifyContent: "content",
           marginLeft: "10%",
           marginRight: "20%",
-          padding: "20px",
           marginTop: "100px",
         }}
       >
         <nav>
-          <a href="/flights/new">Create a New Flight</a>
+          <a href="/flights/new" style={buttonStyle}>
+            Create a New Flight
+          </a>
         </nav>
-        <h1>Flights Index Page</h1>
-        <ul>
-          {this.props.flights?.map((Flight, i) => {
+        <h1 style={{ fontSize: "3rem", backgroundColor: "aliceblue" }}>
+          Flights Index Page
+        </h1>
+        <ul style={{ fontSize: "2rem", backgroundColor: "aliceblue" }}>
+          {this.props.flights?.map((flight, i) => {
             // Convert the departure time to a string representation
-            const departureTime = Flight.departs.toString();
+            const departureTime = flight.departs.toString();
 
             return (
               <li key={i}>
-                The <a href={`/flights/${Flight._id}`}>{Flight.airline}</a> is{" "}
-                {Flight.flightNo} and departure time is {departureTime}
+                The {flight.airline} is {flight.flightNo} and the departure time
+                is {departureTime}{" "}
+                <a href={`/flights/${flight._id}`} style={buttonStyle}>
+                  Detail
+                </a>
               </li>
             );
           })}

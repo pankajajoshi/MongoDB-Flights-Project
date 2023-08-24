@@ -30,6 +30,7 @@ class New extends React.Component {
       cursor: "pointer",
       alignItems: "center",
     };
+
     const backButtonStyle = {
       padding: "10px 20px",
       backgroundColor: "#4caf50",
@@ -55,6 +56,14 @@ class New extends React.Component {
           <br />
           Departs:{" "}
           <input type="datetime-local" name="departs" style={inputStyle} />{" "}
+          <br />
+          Airport:
+          <select name="airport" style={inputStyle}>
+            <option value="AUS">AUS</option>
+            <option value="DAL">DAL</option>
+            <option value="DFW">DFW</option>
+            <option value="HOU">HOU</option>
+          </select>
           <br />
           <hr />
           <input
