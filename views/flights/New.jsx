@@ -30,6 +30,15 @@ class New extends React.Component {
       cursor: "pointer",
       alignItems: "center",
     };
+    const backButtonStyle = {
+      padding: "10px 20px",
+      backgroundColor: "#4caf50",
+      color: "white",
+      border: "none",
+      cursor: "pointer",
+      alignItems: "center",
+      marginLeft: "30px",
+    };
 
     return (
       <div style={formContainerStyle}>
@@ -53,6 +62,9 @@ class New extends React.Component {
             value="Create Flight"
             style={submitButtonStyle}
           />
+          <a href="/flights" style={backButtonStyle}>
+            Back
+          </a>
         </form>
       </div>
     );
@@ -60,25 +72,3 @@ class New extends React.Component {
 }
 
 export default New;
-
-// const React = require("react");
-
-// class New extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <h1>New Flight Details page</h1>
-//         <form action="/flights" method="POST">
-//           Airline: <input type="text" name="airline" /> <br />
-//           FlightNo: <input type="text" name="flightNo" /> <br />
-//           Departs: <input type="datetime-local" name="departs" />{" "}
-//           {/* Updated name attribute */}
-//           <br />
-//           <input type="submit" value="Create Flight" />
-//         </form>
-//       </div>
-//     );
-//   }
-// }
-
-// module.exports = New;

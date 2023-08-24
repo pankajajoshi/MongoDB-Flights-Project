@@ -1,44 +1,50 @@
-const React = require("react");
+import React from "react";
+
+// const myStyle = {
+//   display: "flex",
+//   flexDirection: "column",
+//   alignItems: "center",
+//   justifyContent: "center",
+//   color: "black",
+//   backgroundColor: "lightgrey",
+//   marginLeft: "10%",
+//   marginRight: "20%",
+//   padding: "20px",
+//   marginTop: "100px",
+//   fontSize: "24px",
+//   boxShadow: "0 0 20px rgba(0, 0, 0, 0.2)",
+// };
 
 class Index extends React.Component {
   render() {
-    const { flights } = this.props;
-
-    if (!flights || flights.length === 0) {
-      return <div>No flights available.</div>;
-    }
-
     return (
       <div
         style={{
           fontFamily: "Times New Roman",
           color: "blue",
-          fontSize: "3rem",
+          fontSize: "2rem",
           padding: "2rem",
           alignContent: "center",
+          justifyContent: "content",
+          marginLeft: "10%",
+          marginRight: "20%",
+          padding: "20px",
+          marginTop: "100px",
         }}
       >
         <nav>
-          <a href="/flights/new">Create A New Flight</a>
+          <a href="/flights/new">Create a New Flight</a>
         </nav>
+        <h1>Flights Index Page</h1>
         <ul>
-          {flights.map((flight, index) => {
-            const { _id, airline, flightNo, departs } = flight;
-
-            // Validate flight data
-            if (!airline || !flightNo || !departs) {
-              return (
-                <li key={_id}>
-                  Invalid flight data. Please check the flight details.
-                </li>
-              );
-            }
+          {this.props.flights?.map((Flight, i) => {
+            // Convert the departure time to a string representation
+            const departureTime = Flight.departs.toString();
 
             return (
-              <li key={_id}>
-                Your <a href={`flights/${_id}`}>{airline}</a> flight number is{" "}
-                {flightNo} and the flight leaves at{" "}
-                {new Date(departs).toDateString()}.
+              <li key={i}>
+                The <a href={`/flights/${Flight._id}`}>{Flight.airline}</a> is{" "}
+                {Flight.flightNo} and departure time is {departureTime}
               </li>
             );
           })}
@@ -48,41 +54,4 @@ class Index extends React.Component {
   }
 }
 
-module.exports = Index;
-
-// const React = require("react");
-
-// class Index extends React.Component {
-//   render() {
-//     return (
-//       <div
-//         style={{
-//           fontFamily: "Times New Roman",
-//           color: "blue",
-//           fontSize: "1rem",
-//           padding: "1rem",
-//         }}
-//       >
-//         <nav>
-//           <a href="/flights/new">Create A New Flight</a>
-//         </nav>
-//         <ul>
-//           {
-//             /* In here goes your list with airline name, flight no, and departure date/time */
-//             this.props.flights?.map((flight, index) => {
-//               return (
-//                 <li key={index}>
-//                   Your <a href={`flights/${flight._id}`}>{flight.airline}</a>{" "}
-//                   flight number is {flight.flightNo} and the flight leaves at{" "}
-//                   {flight.departs.toDateString()}.
-//                 </li>
-//               );
-//             })
-//           }
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-
-// module.exports = Index;
+export default Index;
